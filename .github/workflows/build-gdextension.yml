@@ -154,26 +154,9 @@ jobs:
           mkdir -p project/addons/godotgif
           mv demo/addons/godotgif/* project/addons/godotgif
 
-          cd project/addons/godotgif
-          mkdir win32
-          mkdir win64
-          mkdir osx
-          mkdir linux32
-          mkdir linux64
-          
-          touch linux64/.gdignore
-          touch linux32/.gdignore
-          touch osx/.gdignore
-          touch win64/.gdignore
-          touch win32/.gdignore
-
-          mv *.x86_64.so linux64/ || true
-          mv *.x86_32.so linux32/ || true
-          mv *.framework osx/ || true
-          mv *.x86_64.dll win64/ || true
-          mv *.dll win32/ || true
-          rm -rf *.exp *.lib
-          cd ../../..
+          cd project/addons/godotgif/bin
+          rm -rf *.exp *.lib || true
+          cd ../../../..
 
           cp -n 'README.md' 'LICENSE.txt' 'godotgif.gdextension' project/addons/godotgif
       - name: Upload artifact
