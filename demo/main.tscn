@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8huue71yogxe"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_jik7j"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jik7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(122, 117)
+
+[node name="AnimFromSaved" type="Sprite2D" parent="."]
+position = Vector2(488, 115)
+
+[node name="AnimatedSprite2RuntimeFile" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 441)
+
+[node name="AnimFromRuntimeFile" type="Sprite2D" parent="."]
+position = Vector2(499, 439)
+
+[node name="AnimatedSprite2DFromRuntime" type="AnimatedSprite2D" parent="."]
+position = Vector2(926, 121)
+
+[node name="AnimFromRuntime" type="Sprite2D" parent="."]
+position = Vector2(938, 440)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -603.0
+offset_top = -71.5
+offset_right = -253.0
+offset_bottom = -19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+Resource generated at edit time from GIF File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -73.0
+offset_right = 113.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedTexture
+Resource generated at edit time from GIF File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -593.5
+offset_top = 252.5
+offset_right = -250.5
+offset_bottom = 304.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+Resource generated at runtime from GIF File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = 251.0
+offset_right = 120.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+Resource generated at runtime from GIF file"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.5
+offset_top = -67.5
+offset_right = 575.5
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+Resource loaded at runtime from remote GIF buffer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 189.0
+offset_top = 252.0
+offset_right = 588.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+Resource loaded at runtime from remote GIF buffer"
+horizontal_alignment = 1
+vertical_alignment = 1
