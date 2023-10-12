@@ -37,9 +37,8 @@ Refer to [GDExtension C++ example](https://docs.godotengine.org/en/stable/tutori
 
 ## License
 
-<!-- TODO: Determine license -->
-<!--Unless otherwise specified, the extension is released under the
-[MIT license](LICENSE.txt).-->
+Unless otherwise specified, the extension is released under the
+[MIT license](LICENSE.txt).
 
 See the full list of third-party libraries with their licenses used by this
 extension at [src/thirdparty/README.md](src/thirdparty/README.md).
