@@ -158,7 +158,7 @@ jobs:
           rm -rf *.exp *.lib || true
           cd ../../../..
 
-          cp -n 'README.md' 'LICENSE.txt' 'godotgif.gdextension' project/addons/godotgif
+          cp -n 'README.md' 'LICENSE.txt' 'godotgif.gdextension' project/addons/godotgif || true
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
