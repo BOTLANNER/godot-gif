@@ -1,5 +1,6 @@
 #include "register_types.h"
 
+#include "import_gif_to_animated_texture.h"
 #include "gifmanager.h"
 #include "image_frames.h"
 
@@ -7,33 +8,44 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/editor_plugin.hpp>
 #include <godot_cpp/godot.hpp>
 
 using namespace godot;
 
 static GifManager *GifMngrPtr;
 
-
 void register_gif_types(ModuleInitializationLevel p_level)
 {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
 	{
-		return;
+		ClassDB::register_class<ImageFrames>();
+		ClassDB::register_class<GifManager>();
+		GifMngrPtr = memnew(GifManager);
+		Engine::get_singleton()->register_singleton("GifManager", GifManager::get_singleton());
 	}
-	ClassDB::register_class<ImageFrames>();
-	ClassDB::register_class<GifManager>();
-	GifMngrPtr = memnew(GifManager);
-	Engine::get_singleton()->register_singleton("GifManager", GifManager::get_singleton());
+
+	if (p_level == MODULE_INITIALIZATION_LEVEL_EDITOR)
+	{
+
+		ClassDB::register_class<GifToAnimatedTextureImportPlugin>();
+		ClassDB::register_class<GifToAnimatedTexturePlugin>();
+		EditorPlugins::add_by_type<GifToAnimatedTexturePlugin>();
+	}
 }
 
 void unregister_gif_types(ModuleInitializationLevel p_level)
 {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
 	{
-		return;
+		Engine::get_singleton()->unregister_singleton("GifManager");
+		memdelete(GifMngrPtr);
 	}
-	Engine::get_singleton()->unregister_singleton("GifManager");
-	memdelete(GifMngrPtr);
+
+	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
+	{
+		EditorPlugins::remove_by_type<GifToAnimatedTexturePlugin>();
+	}
 }
 
 extern "C"
