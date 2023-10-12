@@ -35,15 +35,15 @@ public:
 
     Ref<AnimatedTexture> animated_texture_from_file(const String &path, int max_frames);
     Ref<AnimatedTexture> animated_texture_from_buffer(const PackedByteArray &p_data, int max_frames);
-    Ref<SpriteFrames> sprite_frames_from_file(const String &path, int max_frames);
-    Ref<SpriteFrames> sprite_frames_from_buffer(const PackedByteArray &p_data, int max_frames);
+    Ref<SpriteFrames> sprite_frames_from_file(const String &path, int max_frames, double fps);
+    Ref<SpriteFrames> sprite_frames_from_buffer(const PackedByteArray &p_data, int max_frames, double fps);
 
 protected:
     static void _bind_methods();
 
 private:
     Ref<AnimatedTexture> i_f_to_a_t(const Ref<ImageFrames> &frames);
-    Ref<SpriteFrames> i_f_to_s_f(const Ref<ImageFrames> &frames);
+    Ref<SpriteFrames> i_f_to_s_f(const Ref<ImageFrames> &frames, double fps);
 };
 
 #endif // GODOT_GIFMANAGER_H

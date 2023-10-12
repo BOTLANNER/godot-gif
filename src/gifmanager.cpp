@@ -35,8 +35,8 @@ void GifManager::_bind_methods()
     ClassDB::bind_method(D_METHOD("animated_texture_from_file", "path", "max_frames"), &GifManager::animated_texture_from_file, DEFVAL(0));
     ClassDB::bind_method(D_METHOD("animated_texture_from_buffer", "data", "max_frames"), &GifManager::animated_texture_from_buffer, DEFVAL(0));
 
-    ClassDB::bind_method(D_METHOD("sprite_frames_from_file", "path", "max_frames"), &GifManager::sprite_frames_from_file, DEFVAL(0));
-    ClassDB::bind_method(D_METHOD("sprite_frames_from_buffer", "data", "max_frames"), &GifManager::sprite_frames_from_buffer, DEFVAL(0));
+    ClassDB::bind_method(D_METHOD("sprite_frames_from_file", "path", "max_frames", "fps"), &GifManager::sprite_frames_from_file, DEFVAL(0), DEFVAL(30));
+    ClassDB::bind_method(D_METHOD("sprite_frames_from_buffer", "data", "max_frames", "fps"), &GifManager::sprite_frames_from_buffer, DEFVAL(0), DEFVAL(30));
 
     // Not a Godot class so this public method does not get exposed
     // ClassDB::bind_method(D_METHOD("load_frames", "gif", "max_frames"), &GifManager::load_from_file);
@@ -79,29 +79,29 @@ Ref<AnimatedTexture> GifManager::i_f_to_a_t(const Ref<ImageFrames> &frames)
     return a;
 }
 
-Ref<SpriteFrames> GifManager::sprite_frames_from_file(const String &path, int max_frames = 0)
+Ref<SpriteFrames> GifManager::sprite_frames_from_file(const String &path, int max_frames = 0, double fps = 30)
 {
     Ref<ImageFrames> frames = memnew(ImageFrames());
     Error err = frames->load(path, max_frames);
     if (err == OK)
     {
-        return i_f_to_s_f(frames);
+        return i_f_to_s_f(frames, fps);
     }
     return nullptr;
 }
 
-Ref<SpriteFrames> GifManager::sprite_frames_from_buffer(const PackedByteArray &p_data, int max_frames = 0)
+Ref<SpriteFrames> GifManager::sprite_frames_from_buffer(const PackedByteArray &p_data, int max_frames = 0, double fps = 30)
 {
     Ref<ImageFrames> frames = memnew(ImageFrames());
     Error err = frames->load_gif_from_buffer(p_data, max_frames);
     if (err == OK)
     {
-        return i_f_to_s_f(frames);
+        return i_f_to_s_f(frames, fps);
     }
     return nullptr;
 }
 
-Ref<SpriteFrames> GifManager::i_f_to_s_f(const Ref<ImageFrames> &frames)
+Ref<SpriteFrames> GifManager::i_f_to_s_f(const Ref<ImageFrames> &frames, double fps = 30)
 {
     Ref<SpriteFrames> sframes;
     sframes.instantiate();
@@ -122,14 +122,14 @@ Ref<SpriteFrames> GifManager::i_f_to_s_f(const Ref<ImageFrames> &frames)
 
     // real_t average_time = total_time / count;
     // sframes->set_animation_speed("gif", average_time);
-    sframes->set_animation_speed("gif", 30); // fps
+    sframes->set_animation_speed("gif", fps); // fps
 
     // Update durations
     for (size_t i = 0; i < count; i++)
     {
         float durationSeconds = frames->get_frame_delay(i);
         // float relativeDuration = durationSeconds * average_time;
-        float relativeDuration = durationSeconds * 30;
+        float relativeDuration = durationSeconds * fps;
         sframes->set_frame("gif", i, sframes->get_frame_texture("gif", i), relativeDuration);
     }
 
