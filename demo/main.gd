@@ -15,12 +15,12 @@ func _ready():
 		print("Hello Game")
 		$AnimFromSaved.texture = load("res://examples/file/optic_a.tres")
 		$AnimatedSprite2D.sprite_frames = load("res://examples/file/optic_s.tres")
-		$AnimatedSprite2D.autoplay = "gif"
+		#$AnimatedSprite2D.autoplay = "gif"
 		$AnimatedSprite2D.play("gif")
 		
 		$AnimFromRuntimeFile.texture = GifManager.animated_texture_from_file("res://examples/file/optic.gif")
 		$AnimatedSprite2RuntimeFile.sprite_frames = GifManager.sprite_frames_from_file("res://examples/file/optic.gif")
-		$AnimatedSprite2RuntimeFile.autoplay = "gif"
+		#$AnimatedSprite2RuntimeFile.autoplay = "gif"
 		$AnimatedSprite2RuntimeFile.play("gif")
 		
 		# Create an HTTP request node and connect its completion signal.
@@ -44,7 +44,7 @@ func _ready():
 				var frms = GifManager.sprite_frames_from_buffer(body)
 				if frms != null:
 					$AnimatedSprite2DFromRuntime.sprite_frames = frms
-					$AnimatedSprite2DFromRuntime.autoplay = "gif"
+					#$AnimatedSprite2DFromRuntime.autoplay = "gif"
 					$AnimatedSprite2DFromRuntime.play("gif")
 				
 		http_request.queue_free()

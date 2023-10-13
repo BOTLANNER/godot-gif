@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpyb6e5oktk8j"]
+
+[ext_resource type="SpriteFrames" uid="uid://dw0lhgpbv4gjj" path="res://examples/file/opticsf.gif" id="1_6cjgj"]
+[ext_resource type="SpriteFrames" uid="uid://hrogrexk3pbu" path="res://examples/file/optic - custom fps.gif" id="2_5ifha"]
+[ext_resource type="Texture2D" uid="uid://fj441156d8to" path="res://examples/file/optic.gif" id="2_v6deh"]
+
+[node name="Main" type="Node"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(244, 138)
+sprite_frames = ExtResource("1_6cjgj")
+animation = &"gif"
+autoplay = "gif"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -481.0
+offset_top = -50.5
+offset_right = -131.0
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+GIF file imported at edit time as SpriteFrames"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(902, 142)
+sprite_frames = ExtResource("2_5ifha")
+animation = &"gif"
+autoplay = "gif"
+
+[node name="Label3" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 177.0
+offset_top = -46.5
+offset_right = 527.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedSprite2D
+GIF file imported at edit time as SpriteFrames with custom 60 FPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimFromSaved" type="Sprite2D" parent="."]
+position = Vector2(551, 459)
+texture = ExtResource("2_v6deh")
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = 271.0
+offset_right = 176.5
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "AnimatedTexture
+GIF file imported at edit time as AnimatedTexture"
+horizontal_alignment = 1
+vertical_alignment = 1

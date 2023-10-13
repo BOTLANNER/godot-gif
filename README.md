@@ -5,6 +5,48 @@ GDExtension for Godot 4+ to load GIF files as [AnimatedTexture](https://docs.god
 
 NOTE: ~~**AnimatedTexture**~~ has been marked as deprecated according to development docs and could be removed in a future version of Godot.
 
+## Usage
+
+### Editor
+
+Gif files can be imported at edit time as one of the supported types via Import options.
+
+<details open>
+  <summary>Editor Imports Options</summary>
+  
+![Editor Imports Options](./docs-images/EditorImportSettings.gif)
+</details>
+
+See the [Editor Imports](./demo/editor_imports_example.tscn) example scene.
+<details open>
+  <summary>Editor Imports Example</summary>
+  
+![Editor Imports](./docs-images/EditorImports.gif)
+</details>
+
+<hr/>
+
+### Runtime
+
+Gif files can be loaded at runtime as one of the supported types via the `GifManager` singleton.
+
+`GifManager` exposes the following methods for loading gifs either from file or from bytes directly:
+![GifManager Methods](./docs-images/methods.png)
+
+e.g. to load from file
+```py
+get_node("AnimFromRuntimeFile").texture = GifManager.animated_texture_from_file("res://examples/file/optic.gif")
+
+get_node("AnimatedSprite2RuntimeFile").sprite_frames = GifManager.sprite_frames_from_file("res://examples/file/optic.gif")
+```
+
+See the [Runtime Imports](./demo/main.tscn) example scene.
+<details open>
+  <summary>Runtime Imports Example</summary>
+  
+![Runtime Imports](./docs-images/RuntimeImports.gif)
+</details>
+
 ## Contributing
 
 ### Setup
@@ -31,7 +73,7 @@ The following environment variables are required:
 1. `GODOT_PATH` - The directory in which Godot is installed
 1. `GODOT_EXECUTABLE` - The executable name of the Godot installation
 
-## More Details
+### More Details
 Refer to [GDExtension C++ example](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html)
 
 
