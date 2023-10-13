@@ -1,6 +1,7 @@
 #include "register_types.h"
 
 #include "import_gif_to_animated_texture.h"
+#include "import_gif_to_sprite_frames.h"
 #include "gifmanager.h"
 #include "image_frames.h"
 
@@ -28,6 +29,10 @@ void register_gif_types(ModuleInitializationLevel p_level)
 	if (p_level == MODULE_INITIALIZATION_LEVEL_EDITOR)
 	{
 
+		ClassDB::register_class<GifToSpriteFramesImportPlugin>();
+		ClassDB::register_class<GifToSpriteFramesPlugin>();
+		EditorPlugins::add_by_type<GifToSpriteFramesPlugin>();
+
 		ClassDB::register_class<GifToAnimatedTextureImportPlugin>();
 		ClassDB::register_class<GifToAnimatedTexturePlugin>();
 		EditorPlugins::add_by_type<GifToAnimatedTexturePlugin>();
@@ -44,6 +49,7 @@ void unregister_gif_types(ModuleInitializationLevel p_level)
 
 	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
 	{
+		EditorPlugins::remove_by_type<GifToSpriteFramesPlugin>();
 		EditorPlugins::remove_by_type<GifToAnimatedTexturePlugin>();
 	}
 }

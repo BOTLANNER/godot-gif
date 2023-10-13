@@ -19,12 +19,10 @@ using namespace godot;
 
 GifToAnimatedTextureImportPlugin::GifToAnimatedTextureImportPlugin()
 {
-    UtilityFunctions::print("Setting up GIF to ATEX Importer");
 }
 
 GifToAnimatedTextureImportPlugin::~GifToAnimatedTextureImportPlugin()
 {
-    UtilityFunctions::print("Tearing down GIF to ATEX Importer");
 }
 
 GifToAnimatedTexturePlugin::GifToAnimatedTexturePlugin()
@@ -47,54 +45,45 @@ void GifToAnimatedTexturePlugin::_disable_plugin()
 
 void GifToAnimatedTexturePlugin::_ready()
 {
-    UtilityFunctions::print("GIF to ATEX Importer Ready");
 }
 
 void GifToAnimatedTexturePlugin::_enter_tree()
 {
-    UtilityFunctions::print("Setting up GIF to ATEX");
     gtatip.instantiate();
     add_import_plugin(gtatip);
 }
 
 void GifToAnimatedTexturePlugin::_exit_tree()
 {
-    UtilityFunctions::print("Tearing down GIF to ATEX");
     remove_import_plugin(gtatip);
     gtatip.unref();
 }
 
 String GifToAnimatedTexturePlugin::_get_plugin_name() const
 {
-    printf("GifToAnimatedTexturePlugin::_get_plugin_name");
     return "GIF to AnimatedTexture";
 }
 
 Ref<Texture2D> GifToAnimatedTexturePlugin::_get_plugin_icon() const
 {
-    printf("GifToAnimatedTexturePlugin::_get_plugin_icon");
     return memnew(Texture2D());
 }
 
 bool GifToAnimatedTexturePlugin::_has_main_screen() const
 {
-    printf("GifToAnimatedTexturePlugin::_has_main_screen");
     return false;
 }
 
 void GifToAnimatedTexturePlugin::_make_visible(bool visible)
 {
-    printf("GifToAnimatedTexturePlugin::_make_visible");
 }
 
 void GifToAnimatedTexturePlugin::_edit(Object *object)
 {
-    printf("GifToAnimatedTexturePlugin::_edit");
 }
 
 bool GifToAnimatedTexturePlugin::_handles(Object *object) const
 {
-    printf("GifToAnimatedTexturePlugin::_handles");
     return false;
 }
 
@@ -151,7 +140,6 @@ PackedStringArray GifToAnimatedTextureImportPlugin::_get_recognized_extensions()
 
 TypedArray<Dictionary> GifToAnimatedTextureImportPlugin::_get_import_options(const String &path, int32_t preset_index = 0) const
 {
-    UtilityFunctions::print("Setting up GIF to ATEX Importer options");
     // Dictionary option;
     // option["name"] = "frames_per_second";
     // option["default_value"] = 30;
@@ -179,7 +167,7 @@ double GifToAnimatedTextureImportPlugin::_get_priority() const
 
 int32_t GifToAnimatedTextureImportPlugin::_get_import_order() const
 {
-    return IMPORT_ORDER_SCENE;
+    return IMPORT_ORDER_DEFAULT;
 }
 
 bool GifToAnimatedTextureImportPlugin::_get_option_visibility(const String &path, const StringName &option_name, const Dictionary &options) const
@@ -189,9 +177,7 @@ bool GifToAnimatedTextureImportPlugin::_get_option_visibility(const String &path
 
 Error GifToAnimatedTextureImportPlugin::_import(const String &source_file, const String &save_path, const Dictionary &options, const TypedArray<String> &platform_variants, const TypedArray<String> &gen_files) const
 {
-    UtilityFunctions::print("Running GIF to ATEX Importer");
+    UtilityFunctions::print("Running GIF to AnimatedTexture Importer");
     Ref<AnimatedTexture> at = GifManager::get_singleton()->animated_texture_from_file(source_file, 0);
-
-    UtilityFunctions::print("GIF to ATEX Importer -> Created new AnimatedTexture");
     return ResourceSaver::get_singleton()->save(at, "" + save_path + "." + _get_save_extension(), 0);
 }

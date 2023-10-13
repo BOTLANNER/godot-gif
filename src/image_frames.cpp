@@ -59,8 +59,6 @@ Error GifLoader::gif_error(int err)
 
 Error GifLoader::_open(void *source, SourceType source_type)
 {
-	UtilityFunctions::print("Attempting open");
-	// ERR_FAIL_COND_V(gif != nullptr, FAILED);
 	int err = 0;
 	gif = DGifOpen(source, source_type == SourceType::FILE ? GifLoader::readFromFile : GifLoader::readFromBuffer, &err); // Loads the headers of the GIF.
 	if (!gif)
