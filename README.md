@@ -59,6 +59,45 @@ See the [Runtime Imports](./demo/main.tscn) example scene.
 ![Runtime Imports](./docs-images/RuntimeImports.gif)
 </details>
 
+
+## Installation
+
+Download the `gdextension` artifact from the [latest successful build](https://github.com/BOTLANNER/godot-gif/actions/workflows/build_releases.yml). (It should be right at the bottom of the **Summary**)
+![image](https://github.com/BOTLANNER/godot-gif/assets/16349308/f28867c6-f669-45f2-9309-dbb17cec2031)
+
+Extract the contents to your Godot project directory.
+
+You should have an `addons` directory at the root with the following structure:
+```bash
+└───addons
+    └───godotgif
+        │   godotgif.gdextension
+        │   LICENSE.txt
+        │   README.md
+        │
+        └───bin
+            │   godotgif.windows.template_debug.x86_32.dll
+            │   godotgif.windows.template_debug.x86_64.dll
+            │   godotgif.windows.template_release.x86_32.dll
+            │   godotgif.windows.template_release.x86_64.dll
+            │   libgodotgif.android.template_debug.arm64.so
+            │   libgodotgif.android.template_release.arm64.so
+            │   libgodotgif.linux.template_debug.x86_32.so
+            │   libgodotgif.linux.template_debug.x86_64.so
+            │   libgodotgif.linux.template_release.x86_32.so
+            │   libgodotgif.linux.template_release.x86_64.so
+            │
+            ├───godotgif.macos.template_debug.framework
+            │       libgodotgif.macos.template_debug
+            │
+            └───godotgif.macos.template_release.framework
+                    libgodotgif.macos.template_release
+```
+
+Open your project. Any exisitng gifs should auto-import. New gifs in the project directory will automatically import as `SpriteFrames`. To convert them into `AnimatedTexture`, update the [import settings](#editor).
+
+The `GifManager` class should also now be available for access within GDScript.
+
 ## Contributing
 
 ### Setup
