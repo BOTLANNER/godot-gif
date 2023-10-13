@@ -1,9 +1,21 @@
 # Godot GIF
+<br>
+
+<p align="center">
+  <img src="./docs-images/logo.gif" alt="Logo" width="128" height="128" />
+</p>
+
+<p align="center">
+	<a href="https://github.com/BOTLANNER/godot-gif/actions/workflows/build_releases.yml"><img alt="GitHub Build" src="https://github.com/BOTLANNER/godot-gif/actions/workflows/build_releases.yml/badge.svg" height="20"/></a>
+	<a href="https://github.com/BOTLANNER/godot-gif/blob/develop/LICENSE.txt"><img alt="MIT License" src="https://img.shields.io/github/license/BOTLANNER/godot-gif" height="20"/></a>
+</p>
+
 
 ## Description
 GDExtension for Godot 4+ to load GIF files as [AnimatedTexture](https://docs.godotengine.org/en/stable/classes/class_animatedtexture.html) and/or [SpriteFrames](https://docs.godotengine.org/en/stable/classes/class_spriteframes.html).
 
 NOTE: ~~**AnimatedTexture**~~ has been marked as deprecated according to development docs and could be removed in a future version of Godot.
+
 
 ## Usage
 
