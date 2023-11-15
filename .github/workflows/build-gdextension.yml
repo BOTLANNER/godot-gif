@@ -105,10 +105,11 @@ jobs:
         if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_64')}}
         shell: sh
         run: |
+          sudo update-ca-certificates -v
           sudo apt-get update
           sudo apt-get install yasm
           cd /opt
-          curl -LO https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
+          curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
           tar xf x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
           rm -f x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
           mv x86_64-godot-linux-gnu_sdk-buildroot buildroot
@@ -119,10 +120,11 @@ jobs:
         if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_32')}}
         shell: sh
         run: |
+          sudo update-ca-certificates -v
           sudo apt-get update
           sudo apt-get install yasm
           cd /opt
-          curl -LO https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/i686-godot-linux-gnu_sdk-buildroot.tar.bz2
+          curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/i686-godot-linux-gnu_sdk-buildroot.tar.bz2
           tar xf i686-godot-linux-gnu_sdk-buildroot.tar.bz2
           rm -f i686-godot-linux-gnu_sdk-buildroot.tar.bz2
           mv i686-godot-linux-gnu_sdk-buildroot buildroot
@@ -185,7 +187,9 @@ jobs:
           mkdir -p project/addons/godotgif
           mv demo/addons/godotgif/* project/addons/godotgif
 
-          cd project/addons/godotgif/bin
+          cd project/addons/godotgif
+          rm -rf 'godotgif.gdextension' || true
+          cd ./bin
           rm -rf *.exp *.lib || true
           cd ../../../..
 
