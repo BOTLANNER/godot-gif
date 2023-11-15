@@ -189,7 +189,7 @@ jobs:
 
           cd project/addons/godotgif
           rm -rf 'godotgif.gdextension' || true
-          cd project/addons/godotgif/bin
+          cd ./bin
           rm -rf *.exp *.lib || true
           cd ../../../..
 
