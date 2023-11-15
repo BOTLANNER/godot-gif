@@ -3,6 +3,8 @@
 entry_symbol = "godot_gif_library_init"
 compatibility_minimum = "4.1"
 
+[libraries]
+
 macos.debug = "bin/godotgif.macos.template_debug.framework"
 macos.release = "bin/godotgif.macos.template_release.framework"
 windows.debug.x86_32 = "bin/godotgif.windows.template_debug.x86_32.dll"

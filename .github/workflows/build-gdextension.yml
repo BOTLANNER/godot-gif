@@ -185,6 +185,8 @@ jobs:
           mkdir -p project/addons/godotgif
           mv demo/addons/godotgif/* project/addons/godotgif
 
+          cd project/addons/godotgif
+          rm -rf 'godotgif.gdextension' || true
           cd project/addons/godotgif/bin
           rm -rf *.exp *.lib || true
           cd ../../../..
