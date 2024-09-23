@@ -28,13 +28,13 @@ class GifToAnimatedTextureImportPlugin : public EditorImportPlugin
 
     GDCLASS(GifToAnimatedTextureImportPlugin, EditorImportPlugin);
 
+public:
     enum Presets
     {
         DEFAULT,
         COUNT
     };
 
-public:
     GifToAnimatedTextureImportPlugin();
     ~GifToAnimatedTextureImportPlugin();
 
@@ -46,7 +46,7 @@ public:
     TypedArray<Dictionary> _get_import_options(const String &path, int32_t preset_index) const;
     String _get_save_extension() const;
     String _get_resource_type() const;
-	double _get_priority() const;
+	float _get_priority() const;
 	int32_t _get_import_order() const;
     bool _get_option_visibility(const String &path, const StringName &option_name, const Dictionary &options) const;
     Error _import(const String &source_file, const String &save_path, const Dictionary &options, const TypedArray<String> &platform_variants, const TypedArray<String> &gen_files) const;

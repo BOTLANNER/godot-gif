@@ -2,6 +2,7 @@
 *.d
 
 # Compiled Object files
+*.os
 *.slo
 *.lo
 *.o
@@ -44,3 +45,4 @@
 bin/
 .sconsign.dblite
 vc140.pdb
+*.import
