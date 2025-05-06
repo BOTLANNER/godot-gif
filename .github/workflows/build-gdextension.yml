@@ -159,7 +159,7 @@ jobs:
           
       - name: Load .scons_cache directory
         id: godot-extension-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{github.workspace}}/.scons_cache/
           key: ${{github.job}}-${{env.BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
