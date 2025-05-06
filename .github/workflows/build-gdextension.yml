@@ -203,7 +203,7 @@ jobs:
             project/
   merge:
     runs-on: ubuntu-latest
-    needs: upload
+    needs: build-gdextension
     steps:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@v4
