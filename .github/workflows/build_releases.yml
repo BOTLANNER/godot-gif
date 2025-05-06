@@ -6,7 +6,7 @@ on:
         description: 'Godot GIF GDExtension Tag:'
         required: true
         type: string
-        default: 'v4.1-ggif'
+        default: 'v4.4.1-ggif'
 
 jobs:
   build-gdextension-release:
