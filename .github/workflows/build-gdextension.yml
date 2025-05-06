@@ -101,35 +101,35 @@ jobs:
           sudo apt-get update
           sudo apt install gcc-multilib g++-multilib
       
-      - name: (Linux) Install buildroot x86_64
-        if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_64')}}
-        shell: sh
-        run: |
-          sudo update-ca-certificates -v
-          sudo apt-get update
-          sudo apt-get install yasm
-          cd /opt
-          curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
-          tar xf x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
-          rm -f x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
-          mv x86_64-godot-linux-gnu_sdk-buildroot buildroot
-          cd buildroot
-          ./relocate-sdk.sh
+      # - name: (Linux) Install buildroot x86_64
+      #   if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_64')}}
+      #   shell: sh
+      #   run: |
+      #     sudo update-ca-certificates -v
+      #     sudo apt-get update
+      #     sudo apt-get install yasm
+      #     cd /opt
+      #     curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     tar xf x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     rm -f x86_64-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     mv x86_64-godot-linux-gnu_sdk-buildroot buildroot
+      #     cd buildroot
+      #     ./relocate-sdk.sh
       
-      - name: (Linux) Install buildroot x86_32
-        if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_32')}}
-        shell: sh
-        run: |
-          sudo update-ca-certificates -v
-          sudo apt-get update
-          sudo apt-get install yasm
-          cd /opt
-          curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/i686-godot-linux-gnu_sdk-buildroot.tar.bz2
-          tar xf i686-godot-linux-gnu_sdk-buildroot.tar.bz2
-          rm -f i686-godot-linux-gnu_sdk-buildroot.tar.bz2
-          mv i686-godot-linux-gnu_sdk-buildroot buildroot
-          cd buildroot
-          ./relocate-sdk.sh
+      # - name: (Linux) Install buildroot x86_32
+      #   if: ${{ startsWith(matrix.opts.identifier, 'linux-') && contains(matrix.opts.arch, 'x86_32')}}
+      #   shell: sh
+      #   run: |
+      #     sudo update-ca-certificates -v
+      #     sudo apt-get update
+      #     sudo apt-get install yasm
+      #     cd /opt
+      #     curl -LO -k https://downloads.tuxfamily.org/godotengine/toolchains/linux/2021-02-11/i686-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     tar xf i686-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     rm -f i686-godot-linux-gnu_sdk-buildroot.tar.bz2
+      #     mv i686-godot-linux-gnu_sdk-buildroot buildroot
+      #     cd buildroot
+      #     ./relocate-sdk.sh
           
       #- name: (Android) Set up Java 11
       #  if: ${{ startsWith(matrix.opts.identifier, 'android-') }}
@@ -173,6 +173,7 @@ jobs:
         env:
           SCONS_CACHE: ${{github.workspace}}/.scons_cache/
           SCONS_CACHE_LIMIT: 7168
+          ANDROID_HOME: ""
         run: |
           PATH=/opt/buildroot/bin:$PATH scons target='${{ matrix.opts.target }}' platform='${{ matrix.opts.platform }}' arch='${{ matrix.opts.arch }}' ${{ matrix.opts.args }} -j2
           ls -la demo/addons/godotgif/bin/
@@ -197,6 +198,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: gdextension
+          name: gdextension-${{ matrix.opts.runner }}-${{ matrix.opts.target }}-${{ matrix.opts.platform }}-${{ matrix.opts.arch }}
           path: |
             project/
+  merge:
+    runs-on: ubuntu-latest
+    needs: upload
+    steps:
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: gdextension
+          pattern: gdextension-*
