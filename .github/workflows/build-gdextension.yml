@@ -14,25 +14,25 @@ jobs:
         opts:
           - identifier: linux-debug (x86_64)
             name: Linux (x86_64) - template_debug
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_debug
             platform: linux
             arch: x86_64
           - identifier: linux-release (x86_64)
             name: Linux (x86_64) - template_release
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_release
             platform: linux
             arch: x86_64
           - identifier: linux-debug (x86_32)
             name: Linux (x86_32) - template_debug
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_debug
             platform: linux
             arch: x86_32
           - identifier: linux-release (x86_32)
             name: Linux (x86_32) - template_release
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_release
             platform: linux
             arch: x86_32
@@ -77,13 +77,13 @@ jobs:
 
           - identifier: android-release (arm64)
             name: Android (arm64) - template_release
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_release
             platform: android
             arch: arm64
           - identifier: android-debug (arm64)
             name: Android (universal) - template_debug
-            runner: ubuntu-20.04
+            runner: ubuntu-latest
             target: template_debug
             platform: android
             arch: arm64
@@ -195,7 +195,7 @@ jobs:
 
           (cp -n 'README.md' 'LICENSE.txt' 'godotgif.gdextension' project/addons/godotgif) || true
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: gdextension
           path: |
