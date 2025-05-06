@@ -160,7 +160,7 @@ String GifToSpriteFramesImportPlugin::_get_resource_type() const
     return "SpriteFrames";
 }
 
-double GifToSpriteFramesImportPlugin::_get_priority() const
+float GifToSpriteFramesImportPlugin::_get_priority() const
 {
     return 1.1;
 }

@@ -160,7 +160,7 @@ String GifToAnimatedTextureImportPlugin::_get_resource_type() const
     return "AnimatedTexture";
 }
 
-double GifToAnimatedTextureImportPlugin::_get_priority() const
+float GifToAnimatedTextureImportPlugin::_get_priority() const
 {
     return 1.0;
 }
