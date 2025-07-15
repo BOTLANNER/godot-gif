@@ -47,7 +47,7 @@ void unregister_gif_types(ModuleInitializationLevel p_level)
 		memdelete(GifMngrPtr);
 	}
 
-	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
+	if (p_level == MODULE_INITIALIZATION_LEVEL_EDITOR)
 	{
 		EditorPlugins::remove_by_type<GifToSpriteFramesPlugin>();
 		EditorPlugins::remove_by_type<GifToAnimatedTexturePlugin>();
