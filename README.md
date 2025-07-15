@@ -19,6 +19,26 @@ NOTE: ~~**AnimatedTexture**~~ has been marked as deprecated according to develop
 
 ## Usage
 
+### Pre-Editor (New Feature)
+
+Added a binary version for windows and linux to convert gifs via command line into **standalone resource files** which can then be added to any Godot project (4.4+) without requiring this addon (unless new gifs need to be converted at runtime)
+
+## Godot Gif Converter:
+
+
+        Example Usage: godot_gif_convert --verbose -- --in=/temp/some-gif.gif --out=/temp/out --ext=res --fps=60
+
+
+        --in                                    [REQUIRED]                              Gif file path or path to directory containing gifs
+        --out                                   [REQUIRED]                              Path to directory to create output result
+        
+        --type                                  (Optional)                              Defaults to SpriteFrames. Can also be set to AnimatedTexture, or Both
+        --ext                                   (Optional)                              Defaults to tres. The file extension to use when saving the resource (tres/res)
+        --max_frames                            (Optional)                              Defaults to 0. When 0, no limit, otherwise only frames inclusively up to the limit will be used
+        --fps                                   (Optional)                              Defaults to 30. Frames per second for SpriteFrames. Not applicable to AnimatedTexure
+
+
+
 ### Editor
 
 Gif files can be imported at edit time as one of the supported types via Import options.
